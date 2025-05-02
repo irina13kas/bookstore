@@ -1,0 +1,348 @@
+body {
+    font-family: 'Courier New', serif;
+    background-color: #fdfaf8;
+    color: #2c2c2c;
+    line-height: 1.7;
+    margin: 0;
+    align-items: center;
+  }
+
+  .author-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px;
+    background: linear-gradient(to bottom, #fffdfa, #f7f4ef);
+    color: #2b2b2b;
+    animation: fadeIn 1s ease-in-out;
+}
+  
+  .container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+  }
+  
+  header {
+    background: #4b3d2e;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  header nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    list-style: none;
+    padding: 0;
+  }
+  
+  header nav a {
+    color: #f4e7d3;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  header nav a:hover {
+    color: #d9c1a5;
+  }
+
+  
+  .section {
+    margin-bottom: 60px;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
+    width: 70em;
+  }
+  
+  .reveal.active .content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .content img {
+    max-width: 320px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  }
+  
+  .content .text {
+    flex: 1;
+    text-align: justify;
+  }
+  
+  .content .text h2 {
+    font-size: 26px;
+    color: #5a4633;
+    margin-bottom: 15px;
+    border-left: 5px solid #cbb89d;
+    padding-left: 10px;
+  }
+  
+  .content .text p {
+    font-size: 18px;
+  }
+  
+  footer {
+    background-color: #4b3d2e;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+  }
+  
+  footer nav a {
+    color: #f4e7d3;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  footer nav a:hover {
+    color: #e2cbb4;
+  }
+
+  .about-page {
+    padding: 40px 0;
+  }
+  
+  .intro, .contact-section, .goodbye-message {
+    margin-bottom: 50px;
+  }
+  
+  .intro h2, .contact-info h2, .goodbye-message h3 {
+    color: #5a4633;
+    margin-bottom: 15px;
+  }
+  
+  .intro p {
+    font-size: 18px;
+    text-align: justify;
+  }
+  
+  .contact-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+  }
+  
+  .contact-info {
+    flex: 1;
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .contact-info p {
+    margin: 10px 10px;
+  }
+  
+  .contact-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  }
+  
+  .goodbye-message h3 {
+    text-align: center;
+    font-size: 22px;
+    font-style: italic;
+    color: #5a4633;
+  }
+  
+  /* Анимация */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .catalog-page h2 {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 28px;
+  }
+  
+  .catalog-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+  }
+  
+  .book-card {
+    width: 280px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background: #fffdf8;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
+  
+  .book-card:hover {
+    transform: scale(1.03);
+  }
+  
+  .book-card h3 {
+    margin-bottom: 10px;
+  }
+  
+  .book-card .price {
+    color: #a52a2a;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .book-card input {
+    width: 60px;
+    margin: 5px 0;
+  }
+  
+  .book-card button {
+    background-color: #4b3d2e;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: #fffdf8;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    position: relative;
+    animation: fadeInModal 0.4s ease;
+  }
+  
+  .modal-content h3 {
+    margin-top: 0;
+    color: #5a4633;
+  }
+  
+  .modal-content input {
+    width: 60px;
+    margin-left: 5px;
+  }
+  
+  .modal-content button {
+    background: #4b3d2e;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 22px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  @keyframes fadeInModal {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .filter-form {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+  }
+  
+  .filter-form input[type="text"],
+  .filter-form select,
+  .filter-form input[type="number"] {
+    padding: 5px;
+    margin: 5px 0;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+  }
+  
+  .filter-form details {
+    margin-top: 10px;
+  }
+  
+  .filter-form summary {
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .filter-form fieldset {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .filter-form label {
+    display: block;
+    margin: 5px 0;
+  }
+  
+  .filter-form button {
+    padding: 8px 16px;
+    background-color: #4b3d2e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .filter-form button:hover {
+    background-color: #31271b;
+  }
+  
+  
