@@ -13,10 +13,11 @@ $total = 0;
 </head>
 <body>
 <?php include('../includes/header.php'); ?>
+<?php include('../includes/authorization_form.php'); ?>
   <div class="cart-container">
 
 <h2>Корзина</h2>
-
+<?php if (isset($_COOKIE['user_id'])): ?>
 <?php if (empty($cart)): ?>
   <p>Корзина пуста.</p>
 <?php else: ?>
@@ -54,6 +55,9 @@ $total = 0;
 <form method="post" action="../includes/clear_cart.php">
 <button type="submit" class="clear-btn">Очистить корзину</button>
 </form>
+<?php else: ?>
+  <h3>Необходимо войти в систему.</h3>
+<?php endif; ?>
 </div>
 <?php include('../includes/footer.php'); ?>
 </body>

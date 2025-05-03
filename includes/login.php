@@ -1,0 +1,20 @@
+<?php
+session_start();
+require_once 'connect_db.php'; // Подключение к БД
+
+$login = $_POST['login'] ?? '';
+$password = $_POST['password'] ?? '';
+$redirect = $_POST['redirect'] ?? '';
+
+$stmt = $pdo->prepare("SELECT * FROM User WHERE Login = ?");
+$stmt->execute([$login]);
+$user = $stmt->fetch();
+
+if ($user && $password===$user['Password']) {
+    setcookie("user_id", $user['Id'], time() + 3600, "/");
+    header("Location: $redirect");
+    exit;
+} else {
+    header("Location: $redirect?error=1");
+    exit;
+}

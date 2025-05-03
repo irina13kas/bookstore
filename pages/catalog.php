@@ -13,10 +13,9 @@ include "../includes/add_to_cart.php";
 </head>
 
 <body>
-<?php 
-    include('../includes/header.php');
-    include('../includes/select_books.php');
- ?>
+<?php include('../includes/header.php');?>
+ <?php include('../includes/authorization_form.php'); ?>
+ <?php include('../includes/select_books.php'); ?>
 <main class="catalog-page">
   <div class="container">
     <h2>Каталог книг</h2>
