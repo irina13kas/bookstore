@@ -1,12 +1,17 @@
 <?php
 session_start();
-require_once '../includes/connect_db.php'; // подключение к БД
+require_once '../includes/connect_db.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
     $phone = trim($_POST['phone'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $address = trim($_POST['address'] ?? '');
     $total_cost = trim($_POST['total_cost'] ?? '');
+    $_SESSION['user'][$name] = [
+        'phone' => $phone,
+        'email' => $email,
+        'address' => $address
+    ];
     $cart = $_SESSION['cart'] ?? [];
     if (empty($cart)) {
         die('Корзина пуста.');
@@ -14,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $pdo->beginTransaction();
-        //вынести в отдельную функцию
         $pdo->exec("INSERT INTO book_in_order (Book_id, Instnces) VALUES (1, 1)");
         $book_order_id = $pdo->lastInsertId();
 
@@ -30,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare("CALL create_order_record(?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([
             $book_order_id,
-            1,                      
+            $_COOKIE['user_id'],                      
             $phone,
             $name,
             $email,
@@ -40,11 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         
         $pdo->commit();
-
+        include "template.php";
         unset($_SESSION['cart']);
-
-        echo "<p style='text-align:center; font-size:20px;'>Ваш заказ оформлен и отправлен в обработку!</p>";
-        echo "<p style='text-align:center;'><a href='catalog.php'>Вернуться в каталог</a></p>";
 
     } catch (Exception $e) {
         echo 1111;
