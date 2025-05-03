@@ -1,16 +1,19 @@
 <?php
 include "filter.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['apply_button'])) {
-$stmt = $pdo->prepare("CALL get_filtered_books(:search, :country, :city, :lang, :publisher, :detective, :heroName)");
-echo $_POST['search'];
+    
+    $publishers = isset($_POST['publisher']) ? implode(',', $_POST['publisher']) : null;
+    $detectives = isset($_POST['detective']) ? implode(',', $_POST['detective']) : null;
+$stmt = $pdo->prepare("CALL get_filtered_books(:search, :country, :city, :lang, :publisher, :detective, :heroName, :method)");
 $stmt->execute([
     ':search' => $_POST['search'] ?: null,
     ':country' => $_POST['country'] ?: null,
     ':city' => $_POST['city'] ?: null,
     ':lang' => $_POST['language'] ?: null,
-    ':publisher' => $_POST['publisher'][0] ?? null,
-    ':detective' => $_POST['detective'][0] ?? null,
-    ':heroName' => $_POST['heroName'] ?: null
+    ':publisher' => $publishers,
+    ':detective' => $detectives,
+    ':heroName' => $_POST['heroName'] ?: null,
+    ':method' => $_POST['method'] ?: null
 ]);
 $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
