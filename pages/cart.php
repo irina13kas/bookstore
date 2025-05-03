@@ -1,73 +1,60 @@
 <?php
 session_start();
-require_once 'includes/db.php'; // подключение к БД через PDO
-include 'includes/header.php';
-
-// Подгружаем книги
-$stmt = $pdo->prepare("
-    SELECT 
-        b.Id,
-        b.Title AS BookTitle,
-        b.Price,
-        b.Instances,
-        b.Year_of_publishing AS BookYear,
-        b.Publisher,
-        ab.Description,
-        ab.Detective,
-        ab.Year_of_publishing AS OriginalYear
-    FROM book b
-    JOIN abstract_book ab ON b.Code = ab.Id
-");
-$stmt->execute();
-$books = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$cart = $_SESSION['cart'] ?? [];
+$total = 0;
 ?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>В гостях у бабушки Кристи</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+<?php include('../includes/header.php'); ?>
+  <div class="cart-container">
 
-<main class="catalog-page">
-  <div class="container">
-    <h2>Каталог книг</h2>
-    <div class="catalog-container">
-      <?php foreach ($books as $book): ?>
-        <div class="book-card" onclick="showDetails(this)" 
-             data-title="<?= htmlspecialchars($book['BookTitle']) ?>"
-             data-price="<?= $book['Price'] ?>"
-             data-description="<?= htmlspecialchars($book['Description']) ?>"
-             data-year="<?= $book['BookYear'] ?>"
-             data-publisher="<?= htmlspecialchars($book['Publisher']) ?>"
-             data-detective="<?= htmlspecialchars($book['Detective']) ?>">
-          <h3><?= htmlspecialchars($book['BookTitle']) ?></h3>
-          <p class="price"><?= $book['Price'] ?> ₽</p>
-          <label>Количество: <input type="number" name="qty" min="1" value="1"></label><br>
-          <button>Добавить в корзину</button>
-        </div>
-      <?php endforeach; ?>
-    </div>
+<h2>Корзина</h2>
 
-    <div class="book-details" id="bookDetails" style="display: none;">
-      <h3 id="detailTitle"></h3>
-      <p><strong>Описание:</strong> <span id="detailDesc"></span></p>
-      <p><strong>Год издания:</strong> <span id="detailYear"></span></p>
-      <p><strong>Издательство:</strong> <span id="detailPublisher"></span></p>
-      <p><strong>Детектив:</strong> <span id="detailDetective"></span></p>
-      <p><strong>Цена:</strong> <span id="detailPrice"></span> ₽</p>
-      <button onclick="hideDetails()">Закрыть</button>
-    </div>
-  </div>
-</main>
-
-<?php include 'includes/footer.php'; ?>
-
-<script>
-function showDetails(card) {
-  document.getElementById('bookDetails').style.display = 'block';
-  document.getElementById('detailTitle').innerText = card.dataset.title;
-  document.getElementById('detailDesc').innerText = card.dataset.description;
-  document.getElementById('detailYear').innerText = card.dataset.year;
-  document.getElementById('detailPublisher').innerText = card.dataset.publisher;
-  document.getElementById('detailDetective').innerText = card.dataset.detective;
-  document.getElementById('detailPrice').innerText = card.dataset.price;
-}
-
-function hideDetails() {
-  document.getElementById('bookDetails').style.display = 'none';
-}
-</script>
+<?php if (empty($cart)): ?>
+  <p>Корзина пуста.</p>
+<?php else: ?>
+  <ul>
+  <?php foreach ($cart as $bookId => $item): 
+        $title = $item['title'];
+        $qty = (int)$item['qty'];
+        $price = (int)$item['price'];
+        $itemTotal = $price * $qty;
+        $total += $itemTotal;
+    ?>
+       <li class="cart-item">
+          <span class="cart-title"><?= htmlspecialchars($title) ?></span>
+          <span class="cart-qty"><?= $qty ?> шт.</span>
+          <span class="cart-price"><?= $price ?> ₽</span>
+          <span class="cart-total"><?= $price * $qty ?> ₽</span>
+        </li>
+    <?php endforeach; ?>
+  </ul>
+  <div class="cart-summary">
+  <strong>Итого: <?= $total ?> ₽</strong>
+</div>
+<?php if (!empty($cart)): ?>
+  <form class="order-form" method="post" action="../includes/order.php">
+    <h3>Оформление заказа</h3>
+    <label>Имя: <input type="text" name="name" required></label><br><br>
+    <label>Телефон: <input type="tel" name="phone" required></label><br><br>
+    <label>Почта: <input type="email" name="email" required></label><br><br>
+    <label>Адрес: <textarea name="address" required></textarea></label><br><br>
+    <input type="hidden" name="total_cost" value="<?= $total ?>">
+    <button type="submit" name="checkout" class="order-btn">Оформить заказ</button>
+  </form>
+<?php endif; ?>
+<?php endif; ?>
+<form method="post" action="../includes/clear_cart.php">
+<button type="submit" class="clear-btn">Очистить корзину</button>
+</form>
+</div>
+<?php include('../includes/footer.php'); ?>
+</body>
+</html>

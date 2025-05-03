@@ -345,4 +345,91 @@ body {
     background-color: #31271b;
   }
   
+  .cart-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fefefe;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background-color: #f9f9f9;
+  }
+  
+  .cart-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .cart-container ul{
+    margin: 0;
+    padding: 0 0 0 5px;
+  }
+
+  .cart-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #ccc;
+    padding: 10px 0;
+  }
+  
+  .cart-item span {
+    flex-basis: 25%;
+    text-align: center;
+  }
+  
+  .cart-summary {
+    text-align: right;
+    font-size: 18px;
+    margin-top: 15px;
+  }
+  
+  .clear-btn, .order-btn {
+    padding: 8px 16px;
+    background-color: #4b3d2e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .clear-btn{
+    margin:25px 5px;
+  }
+  
+  .clear-btn:hover,
+  .order-btn:hover {
+    background-color: #31271b;
+  }
+  
+  .order-form {
+    line-height: 1.2em;
+    margin-top: 25px;
+    padding: 5px 5px 5px 5px;
+    display: flex;
+    width: 37.5em;
+    flex-direction: column;
+  }
+  
+  .order-form label {
+    margin-bottom: 10px;
+    width: 85%;
+    display: flex;
+    align-items: center;
+    gap:20px;
+  }
+  
+  .order-form input,
+  .order-form textarea {
+    padding: 8px;
+    width: 75%;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
   

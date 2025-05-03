@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../includes/add_to_cart.php";
 ?>
 
 <!DOCTYPE html>
@@ -31,12 +32,17 @@ session_start();
              data-language="<?= htmlspecialchars($book['Language']) ?>">
           <h3><?= htmlspecialchars($book['BookTitle']) ?></h3>
           <p class="price"><?= $book['Price'] ?> ₽</p>
+          <form method="post">
+          <input type="hidden" name="title" value="<?= htmlspecialchars($book['BookTitle']) ?>">
+          <input type="hidden" name="price" value="<?= htmlspecialchars($book['Price']) ?>">
+          <input type="hidden" name="book_id" value="<?= htmlspecialchars($book['BookId']) ?>">
           <label>
             Кол-во: 
             <input type="number" name="qty" min="1" value="1" onclick="event.stopPropagation()" onkeydown="event.stopPropagation()">
             </label><br>
 
-            <button onclick="event.stopPropagation()">Добавить в корзину</button>
+            <button type="submit" name="add_to_cart_button" onclick="event.stopPropagation()">Добавить в корзину</button>
+            </form>
         </div>
       <?php endforeach; ?>
     </div>
@@ -52,10 +58,10 @@ session_start();
     <p><strong>Язык:</strong> <span id="modalLang"></span></p>
     <p><strong>Цена:</strong> <span id="modalPrice"></span> ₽</p>
     <label>Количество: <input type="number" min="1" value="1" id="modalQty"></label><br><br>
-    <button>Добавить в корзину</button>
+    <button name="add_to_cart_button" onclick="addToCart()">Добавить в корзину</button>
   </div>
 </div>
-
+</form>
   </div>
 </main>
 
