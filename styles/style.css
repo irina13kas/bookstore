@@ -469,4 +469,33 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
   }
+
+  .qty-form,
+.delete-form {
+  display: inline;
+}
+
+.qty-form button,
+.delete-form button {
+  margin: 0 3px;
+  padding: 2px 6px;
+  background-color: #4b3d2e;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.qty-form button:hover,
+.delete-form button:hover{
+  background-color: #31271b;
+}
+
+.qty-form input{
+  width:24px;
+}
+
+.qty-form{
+  width: 115px;
+}
   

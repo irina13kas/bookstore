@@ -14,6 +14,7 @@ $total = 0;
 <body>
 <?php include('../includes/header.php'); ?>
 <?php include('../includes/authorization_form.php'); ?>
+<?php include('../includes/update_cart.php'); ?>
   <div class="cart-container">
 
 <h2>Корзина</h2>
@@ -30,11 +31,24 @@ $total = 0;
         $total += $itemTotal;
     ?>
        <li class="cart-item">
-          <span class="cart-title"><?= htmlspecialchars($title) ?></span>
-          <span class="cart-qty"><?= $qty ?> шт.</span>
-          <span class="cart-price"><?= $price ?> ₽</span>
-          <span class="cart-total"><?= $price * $qty ?> ₽</span>
-        </li>
+  <span class="cart-title"><?= htmlspecialchars($title) ?></span>
+
+  <form method="post" action="../includes/update_cart.php" class="qty-form">
+    <input type="hidden" name="book_id" value="<?= $bookId ?>">
+    <button type="submit" name="action" value="decrease" <?= $qty <= 1 ? 'disabled' : '' ?>>-</button>
+    <input type="number" name="qty" value="<?= $qty ?>" readonly>
+    <button type="submit" name="action" value="increase">+</button>
+  </form>
+
+  <span class="cart-price"><?= $price ?> ₽</span>
+  <span class="cart-total"><?= $price * $qty ?> ₽</span>
+
+  <form method="post" action="../includes/update_cart.php" class="delete-form">
+    <input type="hidden" name="book_id" value="<?= $bookId ?>">
+    <button type="submit" name="action" value="delete" class="delete-btn">Удалить</button>
+  </form>
+</li>
+
     <?php endforeach; ?>
   </ul>
   <div class="cart-summary">
