@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
-        'name' => 'irina/voucher',
+        'name' => 'irina/christy-bookshop',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '4106f2713f1cd28768e00aff982f466c2f7c710d',
+        'reference' => '40695384eafbb44c52ae35f3837aee58e26d6a1c',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -19,10 +19,10 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'irina/voucher' => array(
+        'irina/christy-bookshop' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '4106f2713f1cd28768e00aff982f466c2f7c710d',
+            'reference' => '40695384eafbb44c52ae35f3837aee58e26d6a1c',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

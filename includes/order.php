@@ -7,7 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $address = trim($_POST['address'] ?? '');
     $total_cost = trim($_POST['total_cost'] ?? '');
-    $_SESSION['user'][$name] = [
+    $_SESSION['user'] = [
+        'name' => $name,
         'phone' => $phone,
         'email' => $email,
         'address' => $address

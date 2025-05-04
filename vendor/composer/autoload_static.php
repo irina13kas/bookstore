@@ -25,7 +25,7 @@ class ComposerStaticInitbfaf43cd7e1ff128db7ac26b2f467646
         ),
         'I' => 
         array (
-            'Irina\\Voucher\\' => 14,
+            'Irina\\ChristyBookshop\\' => 22,
         ),
         'C' => 
         array (
@@ -45,8 +45,8 @@ class ComposerStaticInitbfaf43cd7e1ff128db7ac26b2f467646
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -64,7 +64,7 @@ class ComposerStaticInitbfaf43cd7e1ff128db7ac26b2f467646
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
         ),
-        'Irina\\Voucher\\' => 
+        'Irina\\ChristyBookshop\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
