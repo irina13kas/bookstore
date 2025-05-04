@@ -20,6 +20,10 @@ $totalCost = 0;
         }
         
     $orderNumber = rand(1000, 9999);
+    $_SESSION['order_details'] = [
+        'order_id' => $orderNumber,
+        'total_cost' => $totalCost
+    ];
     $replacements = [
         'num_order' => $orderNumber,
         'fullName' => $user['name'],

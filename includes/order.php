@@ -31,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $pdo->prepare("CALL add_to_book_order(?, ?, ?)");
             $stmt->execute([$book_order_id, $bookId, $qty]);
         }
-
         $stmt = $pdo->prepare("CALL create_order_record(?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([
             $book_order_id,
@@ -46,10 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         $pdo->commit();
         include "template.php";
+        include "send_order.php";
         unset($_SESSION['cart']);
-
+        unset($_SESSION['user']);
+        unset($_SESSION['order_datails']);
     } catch (Exception $e) {
-        echo 1111;
         $pdo->rollBack();
         echo "Ошибка при оформлении заказа: " . $e->getMessage();
     }

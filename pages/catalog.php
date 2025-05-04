@@ -9,6 +9,7 @@ include "../includes/add_to_cart.php";
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>В гостях у бабушки Кристи</title>
+  <link rel="icon" href="/assets/images/icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/styles/style.css">
 </head>
 
@@ -56,8 +57,6 @@ include "../includes/add_to_cart.php";
     <p><strong>Детектив:</strong> <span id="modalDetective"></span></p>
     <p><strong>Язык:</strong> <span id="modalLang"></span></p>
     <p><strong>Цена:</strong> <span id="modalPrice"></span> ₽</p>
-    <label>Количество: <input type="number" min="1" value="1" id="modalQty"></label><br><br>
-    <button name="add_to_cart_button" onclick="addToCart()">Добавить в корзину</button>
   </div>
 </div>
 </form>
