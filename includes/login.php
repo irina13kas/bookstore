@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'connect_db.php'; // Подключение к БД
+require_once 'connect_db.php';
 
 $login = $_POST['login'] ?? '';
 $password = $_POST['password'] ?? '';

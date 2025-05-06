@@ -3,7 +3,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_COOKIE['user_id'])) {
 require_once '../includes/connect_db.php';
 $userId = (int)$_COOKIE['user_id'];
 $filter = $_GET['filter'] ?? 'all';
-echo 1;
 try {
     $stmt = $pdo->prepare("CALL get_user_orders_by_filter(:user_id, :filter)");
     $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);

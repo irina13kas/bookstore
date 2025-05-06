@@ -4,7 +4,6 @@
   <title>В гостях у бабушки Кристи</title>
   <link rel="stylesheet" href="/styles/style.css">
 </head>
-
 <div id="auth-form" class="auth-popup" style="display: none;">
   <form method="POST" action="../includes/login.php">
   <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
@@ -29,11 +28,9 @@
   const registerBtn = document.getElementById('register-btn');
   const authForm = document.getElementById('auth-form');
   const registerForm = document.getElementById('register-form');
-
   authBtn.addEventListener('click', function () {
-    const isLoggedIn = this.textContent === 'Вы в системе';
-
-    if (isLoggedIn) {
+    const isLoggedIn = this.textContent === 'Войти';
+    if (!isLoggedIn) {
       if (confirm('Вы уверены, что хотите выйти из системы?')) {
         window.location.href = '../includes/logout.php';
       }
