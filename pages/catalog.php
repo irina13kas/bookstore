@@ -1,5 +1,6 @@
 <?php
 session_start();
+//unset($_SESSION['cart']);
 include "../includes/add_to_cart.php";
 ?>
 
@@ -36,9 +37,10 @@ include "../includes/add_to_cart.php";
           <input type="hidden" name="title" value="<?= htmlspecialchars($book['BookTitle']) ?>">
           <input type="hidden" name="price" value="<?= htmlspecialchars($book['Price']) ?>">
           <input type="hidden" name="book_id" value="<?= htmlspecialchars($book['BookId']) ?>">
+          <input type="hidden" name="max_qty" value="<?= htmlspecialchars($book['Instances']) ?>">
           <label>
             Кол-во: 
-            <input type="number" name="qty" min="1" value="1" onclick="event.stopPropagation()" onkeydown="event.stopPropagation()">
+            <input type="number" name="qty" min="1" max="<?= $book['Instances'] ?>" value="1" onclick="event.stopPropagation()" onkeydown="event.stopPropagation()">
             </label><br>
 
             <button type="submit" name="add_to_cart_button" onclick="event.stopPropagation()">Добавить в корзину</button>

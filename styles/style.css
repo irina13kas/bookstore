@@ -485,7 +485,7 @@ body {
   }
   
   .cart-item span {
-    flex-basis: 25%;
+    flex-basis: 20%;
     text-align: center;
   }
   
@@ -561,7 +561,7 @@ body {
 }
 
 .qty-form input{
-  width:24px;
+  width:35px;
 }
 
 .qty-form{

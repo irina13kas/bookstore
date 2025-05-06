@@ -1,9 +1,6 @@
 <?php
 require_once '../includes/connect_db.php';
-
-$stmt = $pdo->prepare("SELECT * FROM view_catalog");
-$stmt->execute();
-$books = $stmt->fetchAll(PDO::FETCH_ASSOC);
+include "../includes/get_all_books.php";
 $query = $pdo->prepare("SELECT DISTINCT Country FROM view_countries_cities");
 $query->execute();
 $countries = $query->fetchAll(PDO::FETCH_ASSOC);

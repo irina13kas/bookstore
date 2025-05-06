@@ -15,11 +15,28 @@ $total = 0;
 <body>
 <?php include('../includes/header.php'); ?>
 <?php include('../includes/authorization_form.php'); ?>
-<?php include('../includes/update_cart.php'); ?>
   <div class="cart-container">
 
 <h2>Корзина</h2>
 <?php if (isset($_COOKIE['user_id'])): ?>
+<?php if (!empty($_SESSION['order_errors'])): ?>
+  <div class="error-msg">
+    <ul>
+      <?php foreach ($_SESSION['order_errors'] as $error): ?>
+        <li><?= htmlspecialchars($error) ?></li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
+  <?php unset($_SESSION['order_errors']); ?>
+<?php endif; ?>
+
+<?php if (isset($_GET['error'])): ?>
+  <p class="error-msg"><?= htmlspecialchars($_GET['error']) ?></p>
+<?php else:?>
+  <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+  <p style="color: green;">Заказ успешно оформлен!</p>
+<?php endif; ?>
+<?php endif; ?>
 <?php if (empty($cart)): ?>
   <p>Корзина пуста.</p>
 <?php else: ?>
@@ -27,6 +44,7 @@ $total = 0;
   <?php foreach ($cart as $bookId => $item): 
         $title = $item['title'];
         $qty = (int)$item['qty'];
+        $max_qty = (int)$item['max_qty'];
         $price = (int)$item['price'];
         $itemTotal = $price * $qty;
         $total += $itemTotal;
@@ -34,11 +52,13 @@ $total = 0;
        <li class="cart-item">
   <span class="cart-title"><?= htmlspecialchars($title) ?></span>
 
-  <form method="post" action="../includes/update_cart.php" class="qty-form">
+  <form method="post"  class="qty-form" action="../includes/update_cart.php">
     <input type="hidden" name="book_id" value="<?= $bookId ?>">
+    <input type="hidden" name="qty" value="<?= $qty ?>">
+    <input type="hidden" name="max_qty" value="<?= $max_qty ?>">
     <button type="submit" name="action" value="decrease" <?= $qty <= 1 ? 'disabled' : '' ?>>-</button>
-    <input type="number" name="qty" value="<?= $qty ?>" readonly>
-    <button type="submit" name="action" value="increase">+</button>
+    <input type="number" name="qty" value="<?= $qty ?>" max="<?= $max_qty?>" onchange="this.form.submit()">
+    <button type="submit" name="action" value="increase" <?= $qty >=$max_qty ? 'disabled' : '' ?>>+</button>
   </form>
 
   <span class="cart-price"><?= $price ?> ₽</span>
@@ -72,6 +92,8 @@ $total = 0;
 </form>
 <?php else: ?>
   <h3>Необходимо войти в систему.</h3>
+<?php  $_SESSION = []; ?>
+<?php  session_destroy(); ?>
 <?php endif; ?>
 </div>
 <?php include('../includes/footer.php'); ?>
