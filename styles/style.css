@@ -1,10 +1,18 @@
-body {
+html, body {
     font-family: 'Courier New', serif;
     background-color: #fdfaf8;
     color: #2c2c2c;
     line-height: 1.7;
     margin: 0;
+    padding: 0;
     align-items: center;
+    height: auto;
+  }
+
+  .wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   .authorization{
@@ -211,6 +219,7 @@ body {
     text-align: center;
     padding: 20px 0;
     margin-top: 40px;
+
   }
   
   footer nav a {
@@ -566,6 +575,52 @@ body {
 
 .qty-form{
   width: 115px;
+}
+
+.filter-form {
+  margin: 20px 0;
+}
+
+.order-card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background-color: #f9f9f9;
+}
+
+.order-current {
+  background-color: #e9fce9;
+  border-color: #77c977;
+}
+
+.order-completed {
+  background-color: #f2f2f2;
+  border-color: #bbb;
+  color: #666;
+}
+
+
+.order-card h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.order-info {
+  margin: 10px 0;
+}
+
+.order-books {
+  font-style: italic;
+  color: #555;
+}
+
+.no-orders {
+  margin-top: 50px;
+  font-size: 1.2em;
+  color: #777;
+  text-align: center;
 }
 
 

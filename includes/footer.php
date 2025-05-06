@@ -1,3 +1,4 @@
+<div class="wrapper">
 <footer>
 <div class="container">
   <p>&copy; 2025 В гостях у бабушки Кристи. Все права защищены.</p>
@@ -5,7 +6,9 @@
     <a href="../index.php">Главная</a> |
     <a href="../pages/catalog.php">Каталог</a> |
     <a href="../pages/about.php">О нас</a> |
-    <a href="../pages/cart.php">Корзина</a>
+    <a href="../pages/cart.php">Корзина</a> |
+    <a href="../pages/my_orders.php">Заказы</a>
   </nav>
 </div>
 </footer>
+</div>

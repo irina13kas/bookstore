@@ -2,6 +2,17 @@
 $isLoggedIn = isset($_COOKIE['user_id']);
 $error = $_SESSION['register_error'] ?? null;
 unset($_SESSION['register_error']);
+$userName = 'Вы в системе';
+
+if ($isLoggedIn) {
+    require_once $_SERVER['DOCUMENT_ROOT'] .'/includes/connect_db.php';
+    $stmt = $pdo->prepare("SELECT Name FROM User WHERE Id = ?");
+    $stmt->execute([$_COOKIE['user_id']]);
+    $row = $stmt->fetch();
+    if ($row) {
+        $userName = htmlspecialchars($row['Name']);
+    }
+}
 ?>
 <header>
     <div class="container">
@@ -12,10 +23,11 @@ unset($_SESSION['register_error']);
           <li><a href="../pages/catalog.php">Каталог</a></li>
           <li><a href="../pages/about.php">О нас</a></li>
           <li><a href="../pages/cart.php">Корзина</a></li>
+          <li><a href="../pages/my_orders.php">Заказы</a></li>
         </ul>
       </nav>
       <div class="authorization">
-        <button id="auth-btn"><?= $isLoggedIn ? 'Вы в системе' : 'Войти' ?></button>
+        <button id="auth-btn"><?= $isLoggedIn ? $userName : 'Войти' ?></button>
         <button id="register-btn">Регистрация</button>
       </div>
     </div>

@@ -10,7 +10,6 @@
 <body>
 
 <?php include('../includes/header.php'); ?>
-<?php include('../includes/select_books.php'); ?>
   <main class="about-page">
 
     <section class="intro reveal">
