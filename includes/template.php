@@ -2,6 +2,7 @@
 session_start();
 
 require '../vendor/autoload.php';
+echo $_SESSION['user']['name'];
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Style\Border;
