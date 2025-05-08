@@ -30,7 +30,7 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <h2>Заказы: <?= htmlspecialchars($status) ?></h2>
-
+<a href="../includes/new_order_select_books.php" class="new-order-btn">Оформить новый заказ</a>
 <form method="get" class="form-order-worker">
 <select class="select-order-worker" name="status" onchange="this.form.submit()">
     <option value="all">Все</option>

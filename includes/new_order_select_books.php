@@ -1,0 +1,88 @@
+<?php 
+session_start();
+unset($_SESSION['cart']);
+include "../includes/add_to_cart.php";
+$userRole = $_COOKIE['user_role'] ?? null;
+
+if ($userRole !== 'Worker') {
+    header('Location: ../index.php');
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>О нас — В гостях у бабушки Кристи</title>
+  <link rel="icon" href="/assets/images/icon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<?php include('../includes/header.php'); ?>
+<?php include('../includes/authorization_form.php'); ?>
+<body>
+<div class="container">
+  <form method="POST">
+    <fieldset>
+      <legend>Название книги:</legend>
+      <input type="text" name="Title" placeholder="Введите название книги" value="<?= htmlspecialchars($_POST['Title'] ?? '') ?>">
+      <button type="submit" name="search">Поиск</button>
+    </fieldset>
+  </form>
+
+<?php
+require_once '../includes/connect_db.php';
+$title = $_POST['Title'] ?? '';
+
+if (!empty($title)) {
+    $stmt = $pdo->prepare("CALL get_books_by_title(?)");
+    $stmt->execute([$title]);
+    $books = $stmt->fetchAll();
+} else {
+    include "../includes/get_all_books.php";
+}
+
+if ($books):
+    echo '<table class="book-table">';
+    echo '<tr><th>Название</th><th>Год</th><th>Страниц</th><th>Язык</th><th>Издатель</th><th>Обложка</th><th>Цена</th><th>Кол-во</th><th>Действие</th></tr>';
+    foreach ($books as $book):
+?>
+<tr>
+  <td><?= htmlspecialchars($book['BookTitle']) ?></td>
+  <td><?= $book['BookYear'] ?></td>
+  <td><?= $book['Pages'] ?></td>
+  <td><?= $book['Language'] ?></td>
+  <td><?= $book['Publisher'] ?></td>
+  <td><?= $book['Cover'] ?></td>
+  <td><?= $book['Price'] ?> ₽</td>
+  <td>
+    <form method="post" style="display: flex; gap: 5px;">
+      <input type="hidden" name="book_id" value="<?= $book['BookId'] ?>">
+      <input type="hidden" name="title" value="<?= htmlspecialchars($book['BookTitle']) ?>">
+        <input type="hidden" name="price" value="<?= htmlspecialchars($book['Price']) ?>">
+        <input type="hidden" name="max_qty" value="<?= htmlspecialchars($book['Instances']) ?>">
+      <input type="number" name="qty" min="1" max="<?= $book['Instances'] ?>" value="1" style="width: 60px;">
+    
+  </td>
+  <td>
+  <button type="submit" name="add_to_order">Добавить</button>
+  </td>
+  </form>
+</tr>
+<?php
+    endforeach;
+    echo '</table>';
+else:
+    echo '<p>Книги не найдены.</p>';
+endif;
+?>
+<?php if (!empty($_SESSION['cart'])): ?>
+  <form method="POST" action="../includes/new_order_users_data.php">
+    <button type="submit" class="btn-next">Перейти к оформлению</button>
+  </form>
+<?php endif; ?>
+</div>
+<?php include('../includes/footer.php'); ?>
+</body>
+</html>

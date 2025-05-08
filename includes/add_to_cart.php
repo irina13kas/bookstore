@@ -1,6 +1,6 @@
 <?php
 session_start();
-unset($_SESSION['cart']);
+//unset($_SESSION['cart']);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'] ?? '';
     $qty = (int)($_POST['qty'] ?? 1);
