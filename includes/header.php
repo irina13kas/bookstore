@@ -1,7 +1,14 @@
 <?php
+session_start();
 $isLoggedIn = isset($_COOKIE['user_id']);
 $error = $_SESSION['register_error'] ?? null;
 unset($_SESSION['register_error']);
+if($isLoggedIn){
+  $userRole = $_COOKIE['user_role'];
+}
+else{
+  $userRole = null;
+}
 $userName = 'Вы в системе';
 
 if ($isLoggedIn) {
@@ -20,15 +27,21 @@ if ($isLoggedIn) {
       <nav>
         <ul>
           <li><a href="../index.php">Главная</a></li>
-          <li><a href="../pages/catalog.php">Каталог</a></li>
           <li><a href="../pages/about.php">О нас</a></li>
-          <li><a href="../pages/cart.php">Корзина</a></li>
-          <li><a href="../pages/my_orders.php">Заказы</a></li>
+          <li><a href="../pages/catalog.php">Каталог</a></li>
+          <?php if($userRole==='User' || $userRole===null) : ?>
+            <li><a href="../pages/cart.php">Корзина</a></li>
+            <li><a href="../pages/my_orders.php">Заказы</a></li>
+          <?php elseif ($userRole==='Worker'): ?>
+            <li><a href="../pages/orders_worker.php">Заказы пользователей</a></li>
+            <?php endif; ?>
         </ul>
       </nav>
       <div class="authorization">
         <button id="auth-btn"><?= $isLoggedIn ? $userName : 'Войти' ?></button>
-        <button id="register-btn">Регистрация</button>
+        <?php if($userRole==='User' || $userRole===null) : ?>
+          <button id="register-btn">Регистрация</button>
+        <?php endif; ?>
       </div>
     </div>
   </header>

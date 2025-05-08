@@ -17,6 +17,7 @@ if(!$user){
 
 if ($user && $password===$user['Password']) {
     setcookie("user_id", $user['Id'], time() + 3600, "/");
+    setcookie('user_role', $user['Role'], time() + 3600, '/');
     header("Location: $redirect");
     exit;
 } else {

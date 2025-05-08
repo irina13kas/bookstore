@@ -6,7 +6,7 @@
   <title>В гостях у бабушки Кристи</title>
   <link rel="icon" href="/assets/images/icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/styles/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
 
@@ -56,8 +56,9 @@
 
 <h2>Карта преступлений из книг</h2>
   <div id="map"></div>
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script src="/includes/js/map.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="/includes/js/map.js" defer></script>
 
 </main>
 

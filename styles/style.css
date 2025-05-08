@@ -629,6 +629,91 @@ html, body {
   margin-top: 20px;
 }
 
+.form-order-worker {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.select-order-worker {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  font-size: 14px;
+}
+
+.order-card-worker {
+  background-color: #fff;
+  border-radius: 8px;
+  border-left: 6px solid #2a7ae2;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.order-card-worker:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.order-card-worker.active {
+  border-left-color: #28a745; /* Зеленый для активных */
+}
+
+.order-card-worker.archived {
+  border-left-color: #6c757d; /* Серый для архива */
+  background-color: #f1f1f1;
+}
+
+.order-card-worker p {
+  margin: 5px 0;
+  color: #444;
+}
+
+.order-card-worker ul {
+  margin-top: 5px;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.status-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.status-form select {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  font-size: 14px;
+  transition: border 0.3s ease;
+}
+
+.status-form select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.status-form button, .delete-form button {
+  padding: 6px 14px;
+  background-color: #4b3d2e;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.status-form button:hover, .delete-form button:hover {
+  background-color: #31271b;
+}
+
+
 
 
   
