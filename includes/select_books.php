@@ -4,10 +4,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['apply_button'])) {
     
     $publishers = isset($_POST['publisher']) ? implode(',', $_POST['publisher']) : null;
     $detectives = isset($_POST['detective']) ? implode(',', $_POST['detective']) : null;
-$stmt = $pdo->prepare("CALL get_filtered_books(:search, :country, :city, :lang, :publisher, :detective, :heroName, :method)");
+$stmt = $pdo->prepare("CALL get_filtered_books(:search, :city, :lang, :publisher, :detective, :heroName, :method)");
 $stmt->execute([
     ':search' => $_POST['search'] ?: null,
-    ':country' => $_POST['country'] ?: null,
     ':city' => $_POST['city'] ?: null,
     ':lang' => $_POST['language'] ?: null,
     ':publisher' => $publishers,

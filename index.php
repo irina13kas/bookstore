@@ -6,6 +6,7 @@
   <title>В гостях у бабушки Кристи</title>
   <link rel="icon" href="/assets/images/icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/styles/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
 
@@ -52,10 +53,16 @@
     <img src="/assets/images/second_husband.jpg" alt="Личная жизнь">
   </div>
 </section>
+
+<h2>Карта преступлений из книг</h2>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="/includes/js/map.js"></script>
+
 </main>
+
 <?php include('includes/footer.php'); ?>
 <script>
-// Плавное появление блоков
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {

@@ -1,10 +1,7 @@
 <?php
 require_once '../includes/connect_db.php';
 include "../includes/get_all_books.php";
-$query = $pdo->prepare("SELECT DISTINCT Country FROM view_countries_cities");
-$query->execute();
-$countries = $query->fetchAll(PDO::FETCH_ASSOC);
-$query = $pdo->prepare("SELECT DISTINCT City FROM view_countries_cities");
+$query = $pdo->prepare("SELECT DISTINCT City FROM view_all_cities");
 $query->execute();
 $cities = $query->fetchAll(PDO::FETCH_ASSOC);
 $query = $pdo->prepare("SELECT Lang FROM view_languages");
@@ -27,19 +24,7 @@ $methods_of_killing = $query->fetchAll(PDO::FETCH_ASSOC);
   <details>
     <summary>Фильтры</summary>
 
-    <label>Страна:
-  <select name="country">
-    <option value="">Любая</option>
-    <?php foreach ($countries as $country): ?>
-      <option value="<?= $country['Country'] ?>" 
-        <?= isset($_POST['country']) && $_POST['country'] === $country['Country'] ? 'selected' : '' ?>>
-        <?= $country['Country'] ?>
-      </option>
-    <?php endforeach; ?>
-  </select>
-</label>
-
-<label>Город:
+    <label>Город:
   <select name="city">
     <option value="">Любой</option>
     <?php foreach ($cities as $city): ?>

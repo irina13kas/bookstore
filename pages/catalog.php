@@ -1,6 +1,6 @@
 <?php
 session_start();
-//unset($_SESSION['cart']);
+unset($_SESSION['cart']);
 include "../includes/add_to_cart.php";
 ?>
 

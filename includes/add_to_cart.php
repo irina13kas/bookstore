@@ -1,10 +1,10 @@
 <?php
 session_start();
-//unset($_SESSION['cart']);
+unset($_SESSION['cart']);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'] ?? '';
     $qty = (int)($_POST['qty'] ?? 1);
-    $max_qty = (int)($_POST['max_qty']);
+    $max_qty = (int)($_POST['max_qty'] ?? 1);
     $price = (int)($_POST['price'] ?? 0);
     $book_id = (int)($_POST['book_id'] ?? 0);  
 

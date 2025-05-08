@@ -47,8 +47,8 @@ try {
     unset($_SESSION['cart']);
     unset($_SESSION['user']);
     unset($_SESSION['order_datails']);
-    //header("Location: ../pages/cart.php?success=1");
-    //exit;
+    header("Location: ../pages/cart.php?success=1");
+    exit;
 } catch (PDOException $e) {
     $errorMessage = $e->getMessage();
     header("Location: ../pages/cart.php?error=" . urlencode($errorMessage));

@@ -83,7 +83,6 @@ $sheet->getStyle($range)->getBorders()->getAllBorders()->setBorderStyle(Border::
     }
     $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
     $writer->save($filePath);
-    //exit;
     
 } catch (Exception $e) {
     error_log("Ошибка в fillTemplate(): " . $e->getMessage());
