@@ -1,10 +1,8 @@
 <?php
 require_once '../includes/connect_db.php';
 
-// Проверяем, есть ли кука с ролью
 if ($_COOKIE['user_role'] !== 'Worker') {
-    // Если роль не работник, доступ запрещен
-    header('Location: ../pages/index.php');
+    header('Location: ../index.php');
     exit;
 }
 

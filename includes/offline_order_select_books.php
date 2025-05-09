@@ -70,7 +70,7 @@ else:
 endif;
 ?>
 <?php if (!empty($_SESSION['cart'])): ?>
-  <form method="POST" action="../includes/new_order_checkout.php">
+  <form method="POST" action="../includes/offline_order_checkout.php">
     <button type="submit" class="btn-next">Далее</button>
   </form>
 <?php endif; ?>

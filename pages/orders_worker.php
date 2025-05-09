@@ -23,7 +23,7 @@ if ($userRole !== 'Worker') {
   <div class="container">
 
 <h2>Заказы: </h2>
-<button type="submit" class="btn-next" onclick="location.href='../includes/new_order_select_books.php'">
+<button type="submit" class="btn-next" onclick="location.href='../includes/offline_order_select_books.php'">
   Оформить новый заказ
 </button>
 <form method="get" style="margin-bottom: 20px;" class="order-card-worker">

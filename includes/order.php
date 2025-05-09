@@ -31,7 +31,7 @@ foreach ($cart as $bookId => $item) {
 }
 
 try {
-    $stmt = $pdo->prepare("CALL create_order_with_stock_check(?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("CALL create_online_order_with_stock_check(?, ?, ?, ?, ?, ?, ?)");
     $stmt->bindValue(1, $userId, PDO::PARAM_INT);
     $stmt->bindValue(2, $name, PDO::PARAM_STR);
     $stmt->bindValue(3, $phone, PDO::PARAM_STR);

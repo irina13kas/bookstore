@@ -21,7 +21,13 @@ if ($userRole !== 'Worker') {
 <?php include('../includes/header.php'); ?>
 <?php include('../includes/authorization_form.php'); ?>
   <div class="cart-container">
-
+<?php if (isset($_GET['error'])): ?>
+  <p class="error-msg"><?= htmlspecialchars($_GET['error']) ?></p>
+<?php else:?>
+  <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+  <p style="color: green;">Заказ успешно оформлен!</p>
+<?php endif; ?>
+<?php endif; ?>
 <h2>Оформление заказа покупателя</h2>
 <?php if (empty($cart)): ?>
   <p>Нет заказов</p>
@@ -66,8 +72,12 @@ if ($userRole !== 'Worker') {
 <form method="post" action="../includes/clear_cart.php">
 <button type="submit" class="clear-btn">Удалить заказ</button>
 </form>
-<form method="post" action="new_order_select_books.php">
+<form method="post" action="offline_order_select_books.php">
     <button type="submit" class="btn-next">Назад</button>
+  </form>
+  <form method="post" action="offline_order_submit.php">
+    <input type="hidden" name="total_cost" value="<?= $total ?>">
+    <button type="submit" class="btn-next">Оформить заказ</button>
   </form>
   <?php endif; ?>
 </div>

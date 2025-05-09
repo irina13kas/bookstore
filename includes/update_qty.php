@@ -36,7 +36,7 @@ if ($bookId && isset($_SESSION['cart'][$bookId])) {
     }
 }
 
-    header("Location: ../includes/new_order_checkout.php");
+    header("Location: ../includes/offline_order_checkout.php");
 
 
 exit;

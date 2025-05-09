@@ -10,6 +10,7 @@
 <body>
 
 <?php include('../includes/header.php'); ?>
+<?php include('../includes/authorization_form.php'); ?>
   <main class="about-page">
 
     <section class="intro reveal">
