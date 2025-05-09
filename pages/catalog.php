@@ -1,6 +1,11 @@
 <?php
 session_start();
 include "../includes/add_to_cart.php";
+$userRole = $_COOKIE['user_role'] ?? null;
+if ($userRole !== 'User') {
+    header('Location: ../index.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>

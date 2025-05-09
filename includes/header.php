@@ -31,7 +31,7 @@ if ($isLoggedIn) {
           <?php if($userRole==='User' || $userRole===null) : ?>
             <li><a href="../pages/catalog.php">Каталог</a></li>
             <li><a href="../pages/cart.php">Корзина</a></li>
-            <li><a href="../pages/my_orders.php">Заказы</a></li>
+            <li><a href="../pages/user_orders_history.php">Заказы</a></li>
           <?php elseif ($userRole==='Worker'): ?>
             <li><a href="../pages/orders_worker.php">Заказы пользователей</a></li>
             <?php endif; ?>

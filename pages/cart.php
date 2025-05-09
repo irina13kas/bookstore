@@ -3,7 +3,7 @@ session_start();
 $cart = $_SESSION['cart'] ?? [];
 $total = 0;
 $userRole = $_COOKIE['user_role'] ?? null;
-if ($userRole === 'Worker') {
+if ($userRole !== 'User') {
     header('Location: ../index.php');
     exit;
 }

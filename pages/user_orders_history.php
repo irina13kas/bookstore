@@ -1,6 +1,11 @@
 <?php
 session_start();
 $filter = $_GET['filter'] ?? 'all';
+$userRole = $_COOKIE['user_role'] ?? null;
+if ($userRole !== 'User') {
+    header('Location: ../index.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +30,9 @@ $filter = $_GET['filter'] ?? 'all';
     <?php  $_SESSION = []; ?>
     <?php  session_destroy(); ?>
     <?php else: ?>
+      <div class="container-id">
+      <h3>Ваши ID: <?=$_COOKIE['user_id'] ?></h3>
+    </div>
   <form method="get" class="filter-form">
     <label for="filter">Показать:</label>
     <select name="filter" id="filter" onchange="this.form.submit()">

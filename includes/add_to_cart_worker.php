@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $max_qty = (int)($_POST['max_qty'] ?? 1);
     $price = (int)($_POST['price'] ?? 0);
     $book_id = (int)($_POST['book_id'] ?? 0);  
-
+if($book_id!==0){
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
@@ -23,5 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
     }
     $_SESSION['success'] = "Книга \"$title\" ($qty шт.) успешно добавлена в корзину.";
+}
 }
 ?>

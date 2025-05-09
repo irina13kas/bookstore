@@ -1,6 +1,6 @@
 <?php 
     $host = 'MySQL-8.2';
-    $db   = 'bookstore';
+    $db   = 'bookshop';
     $user = 'root';
     $pass = '';
     $charset = 'utf8'; 

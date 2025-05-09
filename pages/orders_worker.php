@@ -21,26 +21,28 @@ if ($userRole !== 'Worker') {
 
 <?php include('../includes/header.php'); ?>
   <div class="container">
-<?php
-require_once '../includes/connect_db.php';
-$status = $_GET['status'] ?? 'В обработке';
-$stmt = $pdo->prepare("CALL get_orders_by_status(?)");
-$stmt->execute([$status]);
-$orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 
-<h2>Заказы: <?= htmlspecialchars($status) ?></h2>
-<a href="../includes/new_order_select_books.php" class="new-order-btn">Оформить новый заказ</a>
+<h2>Заказы: </h2>
+<button type="submit" class="btn-next" onclick="location.href='../includes/new_order_select_books.php'">
+  Оформить новый заказ
+</button>
 <form method="get" class="form-order-worker">
-<select class="select-order-worker" name="status" onchange="this.form.submit()">
-    <option value="all">Все</option>
-    <option value="В обработке">В обработке</option>
-    <option value="Оформлен">Оформлен</option>
-    <option value="Доставка">Доставка</option>
-    <option value="Завершен">Завершен</option>
-  </select>
-</form>
+  <fieldset>
+    <legend>ID пользователя:</legend>
+    <input type="text" name="User_id" placeholder="Введите ID пользователя" value="<?= htmlspecialchars($_GET['User_id'] ?? '') ?>">
+  </fieldset>
 
+  <select class="select-order-worker" name="status" onchange="this.form.submit()">
+    <option value="all">Все</option>
+    <option value="В обработке" <?= ($_GET['status'] ?? '') === 'В обработке' ? 'selected' : '' ?>>В обработке</option>
+    <option value="Оформлен" <?= ($_GET['status'] ?? '') === 'Оформлен' ? 'selected' : '' ?>>Оформлен</option>
+    <option value="Доставка" <?= ($_GET['status'] ?? '') === 'Доставка' ? 'selected' : '' ?>>Доставка</option>
+    <option value="Завершен" <?= ($_GET['status'] ?? '') === 'Завершен' ? 'selected' : '' ?>>Завершен</option>
+  </select>
+
+  <button type="submit" name="search">Поиск</button>
+</form>
+<?php include("../includes/filter_users_orders.php"); ?>
 <?php
 if (count($orders) === 0) {
     echo "<p>Нет заказов</p>";

@@ -30,19 +30,8 @@ if ($userRole !== 'Worker') {
     </fieldset>
   </form>
 
-<?php
-require_once '../includes/connect_db.php';
-$title = $_POST['Title'] ?? '';
-
-if (!empty($title)) {
-    $stmt = $pdo->prepare("CALL get_books_by_title(?)");
-    $stmt->execute([$title]);
-    $books = $stmt->fetchAll();
-} else {
-    include "../includes/get_all_books.php";
-}
-
-if ($books):
+<?php include "filter_title.php"; ?>
+<?php if ($books):
     echo '<table class="book-table">';
     echo '<tr><th>Название</th><th>Год</th><th>Страниц</th><th>Язык</th><th>Издатель</th><th>Обложка</th><th>Цена</th><th>Кол-во</th><th>Действие</th></tr>';
     foreach ($books as $book):
@@ -82,7 +71,7 @@ endif;
 ?>
 <?php if (!empty($_SESSION['cart'])): ?>
   <form method="POST" action="../includes/new_order_checkout.php">
-    <button type="submit" class="btn-next">Перейти к оформлению</button>
+    <button type="submit" class="btn-next">Далее</button>
   </form>
 <?php endif; ?>
 </div>
