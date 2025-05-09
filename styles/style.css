@@ -733,16 +733,17 @@ html, body {
 
 .btn-next {
   margin-top: 20px;
-  background-color: #388e3c;
-  color: white;
+  background-color: #6c9;
+  color: black;
   padding: 10px 20px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .btn-next:hover {
-  background-color: #2e7d32;
+  background-color: rgb(49, 168, 55)
 }
 
 .highlighted {
@@ -753,6 +754,20 @@ html, body {
   color:red;
   text-align: start;
 }
+
+.btn-type {
+    padding: 8px 16px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #ddd;
+    border-radius: 5px;
+  }
+
+  .btn-type.active {
+    background-color: #6c9;
+    font-weight: bold;
+  }
 
 
   
