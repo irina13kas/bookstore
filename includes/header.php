@@ -28,8 +28,8 @@ if ($isLoggedIn) {
         <ul>
           <li><a href="../index.php">Главная</a></li>
           <li><a href="../pages/about.php">О нас</a></li>
-          <li><a href="../pages/catalog.php">Каталог</a></li>
           <?php if($userRole==='User' || $userRole===null) : ?>
+            <li><a href="../pages/catalog.php">Каталог</a></li>
             <li><a href="../pages/cart.php">Корзина</a></li>
             <li><a href="../pages/my_orders.php">Заказы</a></li>
           <?php elseif ($userRole==='Worker'): ?>

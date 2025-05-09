@@ -729,10 +729,6 @@ html, body {
   background-color: #f5f5f5;
 }
 
-input[type="number"] {
-  width: 50px;
-}
-
 .btn-next {
   margin-top: 20px;
   background-color: #388e3c;
@@ -747,9 +743,9 @@ input[type="number"] {
   background-color: #2e7d32;
 }
 
-
-
-
+.highlighted {
+  background-color: #d0f5d0 !important;
+}
 
 
   

@@ -1,7 +1,6 @@
 <?php 
 session_start();
-unset($_SESSION['cart']);
-include "../includes/add_to_cart.php";
+include "../includes/add_to_cart_worker.php";
 $userRole = $_COOKIE['user_role'] ?? null;
 
 if ($userRole !== 'Worker') {
@@ -47,8 +46,12 @@ if ($books):
     echo '<table class="book-table">';
     echo '<tr><th>Название</th><th>Год</th><th>Страниц</th><th>Язык</th><th>Издатель</th><th>Обложка</th><th>Цена</th><th>Кол-во</th><th>Действие</th></tr>';
     foreach ($books as $book):
+      $bookId = $book['BookId'];
+      $isInCart = isset($_SESSION['cart'][$bookId]);
+      $savedQty = $isInCart ? $_SESSION['cart'][$bookId]['qty'] : 1;
+      $rowClass = $isInCart ? 'highlighted' : '';
 ?>
-<tr>
+<tr class="<?= $rowClass ?>">
   <td><?= htmlspecialchars($book['BookTitle']) ?></td>
   <td><?= $book['BookYear'] ?></td>
   <td><?= $book['Pages'] ?></td>
@@ -62,7 +65,7 @@ if ($books):
       <input type="hidden" name="title" value="<?= htmlspecialchars($book['BookTitle']) ?>">
         <input type="hidden" name="price" value="<?= htmlspecialchars($book['Price']) ?>">
         <input type="hidden" name="max_qty" value="<?= htmlspecialchars($book['Instances']) ?>">
-      <input type="number" name="qty" min="1" max="<?= $book['Instances'] ?>" value="1" style="width: 60px;">
+        <input type="number" name="qty" min="1" max="<?= $book['Instances'] ?>" value="<?= $savedQty ?>" style="width: 60px;">
     
   </td>
   <td>
@@ -78,7 +81,7 @@ else:
 endif;
 ?>
 <?php if (!empty($_SESSION['cart'])): ?>
-  <form method="POST" action="../includes/new_order_users_data.php">
+  <form method="POST" action="../includes/new_order_checkout.php">
     <button type="submit" class="btn-next">Перейти к оформлению</button>
   </form>
 <?php endif; ?>
