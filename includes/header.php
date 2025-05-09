@@ -32,8 +32,11 @@ if ($isLoggedIn) {
             <li><a href="../pages/catalog.php">Каталог</a></li>
             <li><a href="../pages/cart.php">Корзина</a></li>
             <li><a href="../pages/user_orders_history.php">Заказы</a></li>
-          <?php elseif ($userRole==='Worker'): ?>
+          <?php elseif ($userRole==='Worker' || $userRole==='Admin'): ?>
             <li><a href="../pages/orders_worker.php">Заказы пользователей</a></li>
+            <?php endif; ?>
+          <?php if ($userRole==='Admin'): ?>
+            <li><a href="../pages/edit_admin.php">Редактировать</a></li>
             <?php endif; ?>
         </ul>
       </nav>

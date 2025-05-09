@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
-
 <?php include('includes/header.php'); ?>
 <?php include('includes/authorization_form.php'); ?>
 <main class="author-page">

@@ -5,7 +5,9 @@ $bookId = $_POST['book_id'] ?? null;
 $action = $_POST['action'] ?? null;
 $postedQty = isset($_POST['qty']) ? (int)$_POST['qty'] : null;
 $max_qty = (int)$_POST['max_qty'];
-
+echo 1;
+echo $action;
+echo $bookId;
 if ($bookId && isset($_SESSION['cart'][$bookId])) {
     $qty = $_SESSION['cart'][$bookId]['qty'];
     echo 111;
@@ -26,19 +28,21 @@ if ($bookId && isset($_SESSION['cart'][$bookId])) {
             unset($_SESSION['cart'][$bookId]);
             echo 4;
             break;
-
-        default:
-            if ($postedQty >= 1 && $postedQty<=$max_qty) {
-                echo 5;
-                $_SESSION['cart'][$bookId]['qty'] = $postedQty;
-            }
-            break;
+        case 'manual':
+                if ($postedQty >= 1 && $postedQty <= $max_qty) {
+                    $_SESSION['cart'][$bookId]['qty'] = $postedQty;
+                }
+                break;
+        // default:
+        //     if ($postedQty >= 1 && $postedQty<=$max_qty) {
+        //         echo 5;
+        //         $_SESSION['cart'][$bookId]['qty'] = $postedQty;
+        //     }
+        //     break;
     }
 }
 
     header("Location: ../includes/offline_order_checkout.php");
-
-
 exit;
 }
 ?>

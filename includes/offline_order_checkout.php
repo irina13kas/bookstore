@@ -46,9 +46,10 @@ if ($userRole !== 'Worker') {
 
   <form method="post"  class="qty-form" action="../includes/update_qty.php">
     <input type="hidden" name="book_id" value="<?= $bookId ?>">
-    <input type="hidden" name="qty" value="<?= $qty ?>">
     <input type="hidden" name="max_qty" value="<?= $max_qty ?>">
-    <button type="submit" name="action" value="decrease" <?= $qty <= 1 ? 'disabled' : '' ?>>-</button>
+    <input type="hidden" name="action" value="manual" id="action-field-<?= $bookId ?>">
+
+   <button type="submit" name="action" value="decrease" <?= $qty <= 1 ? 'disabled' : '' ?>>-</button>
     <input type="number" name="qty" value="<?= $qty ?>" max="<?= $max_qty?>" onchange="this.form.submit()">
     <button type="submit" name="action" value="increase" <?= $qty >=$max_qty ? 'disabled' : '' ?>>+</button>
   </form>
