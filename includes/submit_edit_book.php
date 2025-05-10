@@ -2,6 +2,7 @@
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once '../includes/connect_db.php';
+    $id = (int)$_POST['id'];
     $book_id = (int)$_POST['book_id'];
     $year = (int)$_POST['year'];
     $pages = (int)$_POST['pages'];
@@ -25,15 +26,17 @@ if (!$not_exists) {
     echo "Такая книга уже существует.";
     exit;
 }
-$stmt = $pdo->prepare("CALL insert_new_book(?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bindValue(1, $book_id, PDO::PARAM_INT);
-    $stmt->bindValue(2, $year, PDO::PARAM_INT);
-    $stmt->bindValue(3, $pages, PDO::PARAM_INT);
-    $stmt->bindValue(4, $instances, PDO::PARAM_INT);
-    $stmt->bindValue(5, $price, PDO::PARAM_INT);
-    $stmt->bindValue(6, $lang_id, PDO::PARAM_INT);
-    $stmt->bindValue(7, $cover, PDO::PARAM_STR);
-    $stmt->bindValue(8, $publisher_id, PDO::PARAM_INT);
+echo $id;
+$stmt = $pdo->prepare("CALL update_book(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bindValue(1, $id, PDO::PARAM_INT);
+    $stmt->bindValue(2, $book_id, PDO::PARAM_INT);
+    $stmt->bindValue(3, $year, PDO::PARAM_INT);
+    $stmt->bindValue(4, $pages, PDO::PARAM_INT);
+    $stmt->bindValue(5, $lang_id, PDO::PARAM_INT);
+    $stmt->bindValue(6, $cover, PDO::PARAM_STR);
+    $stmt->bindValue(7, $publisher_id, PDO::PARAM_INT);
+    $stmt->bindValue(8, $price, PDO::PARAM_INT);
+    $stmt->bindValue(9, $instances, PDO::PARAM_INT);
     $stmt->execute();
 }
 header ('Location: ../pages/edit_admin.php');

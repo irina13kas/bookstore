@@ -31,7 +31,7 @@ include "../includes/data_for_new_book.php";
   </div>
   <?php if ($books):
     echo '<table class="book-table">';
-    echo '<tr><th>Название</th><th>Год</th><th>Страниц</th><th>Язык</th><th>Издатель</th><th>Обложка</th><th>Цена</th><th>Кол-во</th></tr>';
+    echo '<tr><th>Название</th><th>Год</th><th>Страниц</th><th>Язык</th><th>Издатель</th><th>Обложка</th><th>Цена</th><th>Кол-во</th><th>Действие</th></tr>';
     foreach ($books as $book):
 ?>
 <tr class="<?= $rowClass ?>">
@@ -43,6 +43,20 @@ include "../includes/data_for_new_book.php";
   <td><?= $book['Cover'] ?></td>
   <td><?= $book['Price'] ?> ₽</td>
   <td><?= $book['Instances'] ?></td>
+  <td>
+<form method="post" action="../includes/update_book.php">
+    <input type="hidden" name="id" value="<?= $book['BookId'] ?>">
+    <input type="hidden" name="book_id" value="<?= $book['BookTitle'] ?>">
+    <input type="hidden" name="year" value="<?= $book['BookYear'] ?>">
+    <input type="hidden" name="pages" value="<?= $book['Pages'] ?>">
+    <input type="hidden" name="lang_id" value="<?= $book['Language'] ?>">
+    <input type="hidden" name="publisher_id" value="<?= $book['Publisher'] ?>">
+    <input type="hidden" name="cover" value="<?= $book['Cover'] ?>">
+    <input type="hidden" name="price" value="<?= $book['Price'] ?>">
+    <input type="hidden" name="qty" value="<?= $book['Instances'] ?>">
+    <button type="submit" >Редактировать</button>
+</form>
+  </td>
 </tr>
 <?php
     endforeach;
@@ -51,28 +65,24 @@ else:
     echo '<p>Книги не найдены.</p>';
 endif;
 ?>
-
 <?php include "../includes/add_new_book.php"; ?>
 </div>
 <?php include('../includes/footer.php'); ?>
 <script>
    const toolButtons = document.querySelectorAll('.tool-btn');
-  const bookForm = document.getElementById('form-add');
+  const bookAdd = document.getElementById('form-add');
   const bookTable = document.querySelector('.book-table');
 
   toolButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
 
-      // Снять класс active со всех
       toolButtons.forEach(b => b.classList.remove('active'));
 
-      // Поставить на текущую
       btn.classList.add('active');
 
-      // Показывать/скрывать контент
       if (btn.dataset.target === 'form-add') {
-        bookForm.classList.remove('hidden');
+        bookAdd.classList.remove('hidden');
         if (bookTable) bookTable.style.display = 'none';
       }
     });
