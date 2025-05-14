@@ -68,4 +68,5 @@ try {
 } catch (Exception $e) {
     echo json_encode(['success' => false, 'message' => 'Ошибка: ' . $mail->ErrorInfo]);
 }
+    $_SESSION['order_number'] = $orderNumber;
 ?>

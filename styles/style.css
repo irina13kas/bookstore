@@ -489,7 +489,7 @@ html, body {
     margin-top: 1.2em;
   }
   
-  .clear-btn, .order-btn {
+  .clear-btn, .order-btn, .download-btn {
     padding: 0.6em 1em;
     background-color: #4b3d2e;
     color: white;
@@ -503,7 +503,8 @@ html, body {
   }
   
   .clear-btn:hover,
-  .order-btn:hover {
+  .order-btn:hover,
+  .download-btn:hover {
     background-color: #31271b;
   }
   

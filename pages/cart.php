@@ -40,7 +40,18 @@ if ($userRole !== 'User') {
 <?php else:?>
   <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
   <p style="color: green;">Заказ успешно оформлен!</p>
-<?php endif; ?>
+  <?php
+    if (isset($_SESSION['order_number'])) {
+        $orderNumber = $_SESSION['order_number'];
+        $fileName = $orderNumber . '_' . date('Y-m-d') . '.xlsx';
+        $fileUrl = '/assets/template/' . $fileName;
+
+        echo '<a href="' . htmlspecialchars($fileUrl) . '" download>
+                <button class="download-btn" type="button">Скачать заказ (Excel)</button>
+              </a>';
+
+        unset($_SESSION['order_number']);
+    } endif; ?>
 <?php endif; ?>
 <?php if (empty($cart)): ?>
   <p>Корзина пуста.</p>
