@@ -25,13 +25,22 @@ include "../includes/data_for_new_book.php";
 
   <div class="tool-buttons">
     <button data-target="form-add" class="tool-btn">Внести</button>
+    <button id = "btn-delete" class="tool-btn">Удалить</button>
+    <button id="btn-cancel-delete" class="tool-btn hidden">Отмена</button>
   </div>
+  <form id="delete-form" method="POST" action="../includes/delete_books.php">
   <?php if ($books):
     echo '<table class="book-table">';
-    echo '<tr><th>Название</th><th>Год</th><th>Страниц</th><th>Язык</th><th>Издатель</th><th>Обложка</th><th>Цена</th><th>Кол-во</th><th>Действие</th></tr>';
+    echo '<tr>';
+    echo '<th class="checkbox-column hidden"><input type="checkbox" id="select-all"></th>';
+    echo '<th>Название</th><th>Год</th><th>Страниц</th><th>Язык</th><th>Издатель</th><th>Обложка</th><th>Цена</th><th>Кол-во</th><th>Действие</th>';
+    echo '</tr>';
     foreach ($books as $book):
 ?>
 <tr class="<?= $rowClass ?>">
+  <td class="checkbox-column hidden">
+    <input type="checkbox"  name="delete_ids[]" value="<?= $book['BookId'] ?>">
+  </td>
   <td><?= htmlspecialchars($book['BookTitle']) ?></td>
   <td><?= $book['BookYear'] ?></td>
   <td><?= $book['Pages'] ?></td>
@@ -58,10 +67,13 @@ include "../includes/data_for_new_book.php";
 <?php
     endforeach;
     echo '</table>';
-else:
+    ?>
+    <button type="submit" id="confirm-delete" class="hidden">Подтвердить удаление</button>
+<?php else:
     echo '<p>Книги не найдены.</p>';
 endif;
 ?>
+</form>
 <?php include "../includes/add_new_book.php"; ?>
 </div>
 <?php include('../includes/footer.php'); ?>
@@ -84,6 +96,64 @@ endif;
       }
     });
   });
+
+const btnDelete = document.getElementById('btn-delete');
+  const btnCancel = document.getElementById('btn-cancel-delete');
+  const confirmBtn = document.getElementById('confirm-delete');
+  const checkboxes = document.querySelectorAll('input[name="delete_ids[]"]');
+  const checkboxCols = document.querySelectorAll('.checkbox-column');
+  const selectAll = document.getElementById('select-all');
+
+  btnDelete.addEventListener('click', () => {
+    checkboxCols.forEach(el => el.classList.remove('hidden'));
+    btnCancel.classList.remove('hidden');
+    btnDelete.classList.add('hidden');
+  });
+
+  btnCancel.addEventListener('click', () => {
+    checkboxCols.forEach(el => el.classList.add('hidden'));
+    confirmBtn.classList.add('hidden');
+    btnCancel.classList.add('hidden');
+    btnDelete.classList.remove('hidden');
+
+    checkboxes.forEach(cb => cb.checked = false);
+    if (selectAll) selectAll.checked = false;
+  });
+
+  checkboxes.forEach(cb => {
+    cb.addEventListener('change', () => {
+      const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
+      confirmBtn.classList.toggle('hidden', !anyChecked);
+    });
+  });
+
+  if (selectAll) {
+    selectAll.addEventListener('change', function () {
+      checkboxes.forEach(cb => cb.checked = this.checked);
+      const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
+      confirmBtn.classList.toggle('hidden', !anyChecked);
+    });
+  }
+
+  document.querySelectorAll('.tool-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (btn.textContent === 'Удалить') {
+      document.querySelectorAll('.checkbox-column').forEach(td => td.classList.remove('hidden'));
+      document.getElementById('confirm-delete').classList.add('hidden');
+
+      const checkboxes = document.querySelectorAll('input[name="delete_ids[]"]');
+      checkboxes.forEach(cb => cb.addEventListener('change', () => {
+        const anyChecked = [...checkboxes].some(cb => cb.checked);
+        document.getElementById('confirm-delete').classList.toggle('hidden', !anyChecked);
+      }));
+
+      document.getElementById('select-all').addEventListener('change', function () {
+        checkboxes.forEach(cb => cb.checked = this.checked);
+        document.getElementById('confirm-delete').classList.toggle('hidden', !this.checked);
+      });
+    }
+  });
+});
 </script>
 </body>
 

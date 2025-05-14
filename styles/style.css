@@ -886,5 +886,13 @@ html, body {
   background-color: #36995e;
 }
 
+.checkbox-column {
+  width: 4em;
+  text-align: center;
+}
+.hidden {
+  display: none;
+}
+
 
   
