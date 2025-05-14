@@ -3,7 +3,7 @@ session_start();
 
 $userRole = $_COOKIE['user_role'] ?? null;
 
-if ($userRole !== 'Worker') {
+if ($userRole === 'User') {
     header('Location: ../pages/index.php');
     exit;
 }
@@ -20,6 +20,7 @@ if ($userRole !== 'Worker') {
 <body>
 
 <?php include('../includes/header.php'); ?>
+<?php include('../includes/authorization_form.php'); ?>
   <div class="container">
 
 <h2>Заказы: </h2>
@@ -107,7 +108,7 @@ if (count($orders) === 0) {
               <?php endforeach; ?>
             </ul>
             <p><b>Полная стоимость:</b> <?= htmlspecialchars($info['Total'] ?? '-') ?></p>
-            <form method="post" action="update_status.php" class="status-form">
+            <form method="post" action="../includes/update_status_of_order.php" class="status-form">
               <input type="hidden" name="order_id" value="<?= $order_id ?>">
               <select name="new_status">
                 <option <?= $info['Status'] === 'В обработке' ? 'selected' : '' ?>>В обработке</option>
@@ -126,6 +127,9 @@ if (count($orders) === 0) {
     }
 }
 ?>
+    <?php if (!empty($_SESSION['cart'])): ?>
+      <?php unset($_SESSION['cart']); ?>
+    <?php endif; ?>
 </div>
 <?php include('../includes/footer.php'); ?>
 </body>

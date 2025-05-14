@@ -69,6 +69,9 @@ else:
     echo '<p>Книги не найдены.</p>';
 endif;
 ?>
+  <form method="POST" action="../pages/orders_worker.php">
+    <button type="submit" class="btn-next">Отмена</button>
+  </form>
 <?php if (!empty($_SESSION['cart'])): ?>
   <form method="POST" action="../includes/offline_order_checkout.php">
     <button type="submit" class="btn-next">Далее</button>

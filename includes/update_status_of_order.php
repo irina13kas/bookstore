@@ -9,7 +9,7 @@ if ($_COOKIE['user_role'] !== 'Worker') {
 $orderId = $_POST['order_id'];
 $newStatus = $_POST['new_status'];
 
-$stmt = $pdo->prepare("UPDATE orders SET status = ? WHERE Id = ?");
+$stmt = $pdo->prepare("UPDATE order_online SET status = ? WHERE Id = ?");
 $stmt->execute([$newStatus, $orderId]);
 
 header('Location: ../pages/orders_worker.php');
