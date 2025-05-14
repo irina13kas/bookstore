@@ -37,7 +37,7 @@ if ($userRole !== 'User') {
              data-language="<?= htmlspecialchars($book['Language']) ?>">
           <h3><?= htmlspecialchars($book['BookTitle']) ?></h3>
           <p class="price"><?= $book['Price'] ?> ₽</p>
-          <form method="post">
+          <form class="add-to-cart-form" method="post" action="../includes/add_to_cart.php">
           <input type="hidden" name="title" value="<?= htmlspecialchars($book['BookTitle']) ?>">
           <input type="hidden" name="price" value="<?= htmlspecialchars($book['Price']) ?>">
           <input type="hidden" name="book_id" value="<?= htmlspecialchars($book['BookId']) ?>">
@@ -72,6 +72,19 @@ if ($userRole !== 'User') {
 <?php include('../includes/footer.php'); ?>
 
 <script>
+document.querySelectorAll('.add-to-cart-form').forEach(form => {
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData
+    });
+  });
+});
+
 function showDetails(card) {
 var card = event.target.closest('.book-card');
   document.getElementById('modalTitle').innerText = card.getAttribute('data-title');

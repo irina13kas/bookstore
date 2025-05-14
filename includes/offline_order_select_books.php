@@ -3,7 +3,7 @@ session_start();
 include "../includes/add_to_cart_worker.php";
 $userRole = $_COOKIE['user_role'] ?? null;
 
-if ($userRole !== 'Worker') {
+if ($userRole === 'User') {
     header('Location: ../index.php');
     exit;
 }

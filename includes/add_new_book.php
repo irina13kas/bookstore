@@ -1,5 +1,10 @@
 <?php 
 session_start();
+$userRole = $_COOKIE['user_role'] ?? null;
+if ($userRole !== 'Admin') {
+    header('Location: ../index.php');
+    exit;
+}
 ?>
 <div id="form-add" class="book-form hidden">
   <h3>Добавить новую книгу</h3>

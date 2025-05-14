@@ -13,7 +13,7 @@ $userName = 'Вы в системе';
 
 if ($isLoggedIn) {
     require_once $_SERVER['DOCUMENT_ROOT'] .'/includes/connect_db.php';
-    $stmt = $pdo->prepare("SELECT Name FROM User WHERE Id = ?");
+    $stmt = $pdo->prepare("SELECT Name FROM user WHERE Id = ?");
     $stmt->execute([$_COOKIE['user_id']]);
     $row = $stmt->fetch();
     if ($row) {
