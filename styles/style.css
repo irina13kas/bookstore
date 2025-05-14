@@ -36,7 +36,7 @@ html, body {
     background-color: rgb(226, 216, 216);
   }
   .auth-popup {
-    margin: 25px 0 0 25px;
+    margin: 2em 0 0 2em;
     background: white;
     padding: 15px;
     border: 2px solid #31271b;
@@ -44,7 +44,7 @@ html, body {
     width: 40%;
   }
   .auth-popup input {
-    padding: 6px;
+    padding: 0.5em;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
@@ -73,11 +73,11 @@ html, body {
   }
   .register-popup {
     position: fixed;
-    top: 100px;
-    right: 20px;
+    top: 10em;
+    right: 2em;
     background: #fff;
     border: 2px solid #ccc;
-    padding: 20px;
+    padding: 2em;
     z-index: 1000;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -86,19 +86,19 @@ html, body {
   .register-popup form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 1em;
   }
   
   .register-popup input {
-    padding: 8px;
-    font-size: 14px;
+    padding: 0.5em;
+    font-size: 1em;
     border: 1px solid #aaa;
     border-radius: 5px;
   }
   
   .register-popup button {
-    padding: 8px;
-    font-size: 14px;
+    padding: 0.5em;
+    font-size: 1em;
     background-color: #3498db;
     color: white;
     border: none;
@@ -113,18 +113,18 @@ html, body {
   .error-msg {
     color: red;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 1em;
     background-color: #ffe0e0;
-    padding: 10px;
+    padding: 1em;
     border: 1px solid red;
     border-radius: 5px;
-    margin: 10px
+    margin: 1em
   }
 
   .author-page {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 30px;
+    padding: 3em;
     background: linear-gradient(to bottom, #fffdfa, #f7f4ef);
     color: #2b2b2b;
     animation: fadeIn 1s ease-in-out;
@@ -133,25 +133,25 @@ html, body {
   .container {
     max-width: 1100px;
     margin: auto;
-    padding: 0 20px;
+    padding: 0 2em;
   }
   
   header {
     background: #4b3d2e;
     color: #fff;
-    padding: 20px 0;
+    padding: 2em 0;
     text-align: center;
   }
   
   header h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
+    font-size: 2.3em;
+    margin-bottom: 1em;
   }
   
   header nav ul {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 5em;
     list-style: none;
     padding: 0;
   }
@@ -169,14 +169,14 @@ html, body {
 
   
   .section {
-    margin-bottom: 60px;
+    margin-bottom: 3em;
   }
   
   .content {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 30px;
+    gap: 3em;
     flex-wrap: wrap;
     opacity: 0;
     transform: translateY(30px);
@@ -190,7 +190,7 @@ html, body {
   }
   
   .content img {
-    max-width: 320px;
+    max-width: 20em;
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
@@ -202,7 +202,7 @@ html, body {
   }
   
   .content .text h2 {
-    font-size: 26px;
+    font-size: 1.7em;
     color: #5a4633;
     margin-bottom: 15px;
     border-left: 5px solid #cbb89d;
@@ -210,21 +210,21 @@ html, body {
   }
   
   .content .text p {
-    font-size: 18px;
+    font-size: 1.2em;
   }
   
   footer {
     background-color: #4b3d2e;
     color: #fff;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
+    padding: 2em 0;
+    margin-top: 4em;
 
   }
   
   footer nav a {
     color: #f4e7d3;
-    margin: 0 10px;
+    margin: 0 1em;
     text-decoration: none;
     transition: color 0.3s ease;
   }
@@ -234,38 +234,38 @@ html, body {
   }
 
   .about-page {
-    padding: 40px 0;
+    padding: 4em 0;
   }
   
   .intro, .contact-section, .goodbye-message {
-    margin-bottom: 50px;
+    margin-bottom: 5em;
   }
   
   .intro h2, .contact-info h2, .goodbye-message h3 {
     color: #5a4633;
-    margin-bottom: 15px;
+    margin-bottom: 1.2em;
   }
   
   .intro p {
-    font-size: 18px;
+    font-size: 1.2em;
     text-align: justify;
   }
   
   .contact-flex {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 4em;
     align-items: center;
   }
   
   .contact-info {
     flex: 1;
-    font-size: 18px;
+    font-size: 1.2em;
     text-align: center;
   }
   
   .contact-info p {
-    margin: 10px 10px;
+    margin: 1em 1em;
   }
   
   .contact-image img {
@@ -277,12 +277,11 @@ html, body {
   
   .goodbye-message h3 {
     text-align: center;
-    font-size: 22px;
+    font-size: 1.4em;
     font-style: italic;
     color: #5a4633;
   }
   
-  /* Анимация */
   .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -295,22 +294,22 @@ html, body {
   
   .catalog-page h2 {
     text-align: center;
-    margin: 30px 0;
-    font-size: 28px;
+    margin: 2em 0;
+    font-size: 1.7em;
   }
   
   .catalog-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 2em;
     justify-content: center;
   }
   
   .book-card {
-    width: 280px;
+    width: 25em;
     border: 1px solid #ccc;
     border-radius: 10px;
-    padding: 20px;
+    padding: 1.2em;
     background: #fffdf8;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     transition: transform 0.3s;
@@ -322,25 +321,25 @@ html, body {
   }
   
   .book-card h3 {
-    margin-bottom: 10px;
+    margin-bottom: 1em;
   }
   
   .book-card .price {
     color: #a52a2a;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 1em;
   }
   
   .book-card input {
-    width: 60px;
-    margin: 5px 0;
+    width: 2em;
+    margin: 0.5em 0;
   }
   
   .book-card button {
     background-color: #4b3d2e;
     color: #fff;
     border: none;
-    padding: 6px 12px;
+    padding: 0.3em 1em;
     border-radius: 5px;
     cursor: pointer;
   }
@@ -359,7 +358,7 @@ html, body {
   
   .modal-content {
     background: #fffdf8;
-    padding: 30px;
+    padding: 2em;
     border-radius: 12px;
     max-width: 600px;
     width: 90%;
@@ -373,25 +372,11 @@ html, body {
     color: #5a4633;
   }
   
-  .modal-content input {
-    width: 60px;
-    margin-left: 5px;
-  }
-  
-  .modal-content button {
-    background: #4b3d2e;
-    color: #fff;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
   .close {
     position: absolute;
-    top: 12px;
-    right: 16px;
-    font-size: 22px;
+    top: 0.8em;
+    right: 0.8em;
+    font-size: 1.4em;
     color: #333;
     cursor: pointer;
   }
@@ -410,45 +395,45 @@ html, body {
   .filter-form {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 30px;
+    padding: 1.5em;
+    margin-bottom: 3em;
     border-radius: 10px;
   }
   
   .filter-form input[type="text"],
   .filter-form select,
   .filter-form input[type="number"] {
-    padding: 5px;
-    margin: 5px 0;
+    padding: 0.5em;
+    margin: 0.5em 0;
     width: 100%;
     max-width: 300px;
     box-sizing: border-box;
   }
   
   .filter-form details {
-    margin-top: 10px;
+    margin-top: 1em;
   }
   
   .filter-form summary {
     font-weight: bold;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin-bottom: 1em;
   }
   
   .filter-form fieldset {
     border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 1em;
+    margin-bottom: 1em;
     border-radius: 5px;
   }
   
   .filter-form label {
     display: block;
-    margin: 5px 0;
+    margin: 0.5em 0;
   }
   
   .filter-form button {
-    padding: 8px 16px;
+    padding: 0.6em 1em;
     background-color: #4b3d2e;
     color: white;
     border: none;
@@ -462,8 +447,8 @@ html, body {
   
   .cart-container {
     max-width: 600px;
-    margin: 30px auto;
-    padding: 20px;
+    margin: 3em auto;
+    padding: 2em;
     background: #fefefe;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -473,7 +458,7 @@ html, body {
   
   .cart-container h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 1.5em;
   }
   .cart-container ul{
     margin: 0;
@@ -490,7 +475,7 @@ html, body {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px dashed #ccc;
-    padding: 10px 0;
+    padding: 1em 0;
   }
   
   .cart-item span {
@@ -500,12 +485,12 @@ html, body {
   
   .cart-summary {
     text-align: right;
-    font-size: 18px;
-    margin-top: 15px;
+    font-size: 1.2em;
+    margin-top: 1.2em;
   }
   
   .clear-btn, .order-btn {
-    padding: 8px 16px;
+    padding: 0.6em 1em;
     background-color: #4b3d2e;
     color: white;
     border: none;
@@ -514,7 +499,7 @@ html, body {
   }
 
   .clear-btn{
-    margin:25px 5px;
+    margin:2.5em 0.5em;
   }
   
   .clear-btn:hover,
@@ -524,26 +509,26 @@ html, body {
   
   .order-form {
     line-height: 1.2em;
-    margin-top: 25px;
-    padding: 5px 5px 5px 5px;
+    margin-top: 2.5em;
+    padding: 0.5em 0.5em;
     display: flex;
     width: 37.5em;
     flex-direction: column;
   }
   
   .order-form label {
-    margin-bottom: 10px;
+    margin-bottom: 1em;
     width: 85%;
     display: flex;
     align-items: center;
-    gap:20px;
+    gap:1.5em;
   }
   
   .order-form input,
   .order-form textarea {
-    padding: 8px;
+    padding: 0.6em;
     width: 75%;
-    margin-top: 4px;
+    margin-top: 0.4em;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
@@ -555,8 +540,8 @@ html, body {
 
 .qty-form button,
 .delete-form button {
-  margin: 0 3px;
-  padding: 2px 6px;
+  margin: 0 0.1em;
+  padding: 0.2em 0.6em;
   background-color: #4b3d2e;
     color: white;
     border: none;
@@ -570,21 +555,22 @@ html, body {
 }
 
 .qty-form input{
-  width:35px;
+  width:2em;
 }
 
 .qty-form{
-  width: 115px;
+  text-align: center;
+  width: 7em;
 }
 
 .filter-form {
-  margin: 20px 0;
+  margin: 2em 0;
 }
 
 .order-card {
   border: 1px solid #ccc;
-  padding: 20px;
-  margin-bottom: 15px;
+  padding: 2em;
+  margin-bottom: 1.5em;
   border-radius: 10px;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
   background-color: #f9f9f9;
@@ -608,7 +594,7 @@ html, body {
 }
 
 .order-info {
-  margin: 10px 0;
+  margin: 1em 0;
 }
 
 .order-books {
@@ -617,39 +603,39 @@ html, body {
 }
 
 .no-orders {
-  margin-top: 50px;
+  margin-top: 5em;
   font-size: 1.2em;
   color: #777;
   text-align: center;
 }
 
 #map {
-  height: 600px;
+  height: 45em;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 2em;
 }
 
 .form-order-worker {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
-  gap:20px;
-  padding:15px;
+  margin-bottom: 1em;
+  gap:2em;
+  padding:1.5em;
 }
 
 .select-order-worker {
-  padding: 6px 12px;
+  padding: 0.4em 1em;
   border-radius: 4px;
   border: 1px solid #aaa;
-  font-size: 14px;
+  font-size: 1em;
 }
 
 .order-card-worker {
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 8px;
   border-left: 6px solid #2a7ae2;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 2em;
+  margin-bottom: 2em;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   transition: 0.3s;
 }
@@ -659,39 +645,39 @@ html, body {
 }
 
 .order-card-worker.active {
-  border-left-color: #28a745; /* Зеленый для активных */
+  border-left-color: #28a745;
 }
 
 .order-card-worker.archived {
-  border-left-color: #6c757d; /* Серый для архива */
+  border-left-color: #6c757d; 
   background-color: #f1f1f1;
 }
 
 .order-card-worker p {
-  margin: 5px 0;
+  margin: 0.5em 0;
   color: #444;
 }
 
 .order-card-worker ul {
-  margin-top: 5px;
-  padding-left: 20px;
+  margin-top: 0.5em;
+  padding-left: 2em;
   list-style-type: disc;
 }
 
 .status-form {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  gap: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .status-form select {
-  padding: 6px 12px;
+  padding: 0.4em 1em;
   border: 1px solid #ccc;
   border-radius: 6px;
   background-color: #f9f9f9;
-  font-size: 14px;
+  font-size: 0.8em;
   transition: border 0.3s ease;
 }
 
@@ -701,12 +687,12 @@ html, body {
 }
 
 .status-form button, .delete-form button {
-  padding: 6px 14px;
+  padding: 0.6em 1em;
   background-color: #4b3d2e;
   color: #fff;
   border: none;
   border-radius: 2px;
-  font-size: 14px;
+  font-size: 1em;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -718,12 +704,12 @@ html, body {
 .book-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 2em;
 }
 
 .book-table th, .book-table td {
   border: 1px solid #ccc;
-  padding: 8px;
+  padding: 0.4em;
   text-align: center;
 }
 
@@ -732,14 +718,14 @@ html, body {
 }
 
 .btn-next {
-  margin-top: 20px;
+  margin-top: 2em;
   background-color: #6c9;
   color: black;
-  padding: 10px 20px;
+  padding: 1em 2em;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  margin-bottom: 20px;
+  margin-bottom: 2em;
 }
 
 .btn-next:hover {
@@ -756,8 +742,8 @@ html, body {
 }
 
 .btn-type {
-    padding: 8px 16px;
-    margin-right: 10px;
+    padding: 0.6em 1.2em;
+    margin-right: 1em;
     border: none;
     cursor: pointer;
     background-color: #ddd;
@@ -776,12 +762,12 @@ html, body {
 
 .tool-buttons {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 1em;
+  margin-bottom: 2em;
 }
 
 .tool-buttons button {
-  padding: 10px 20px;
+  padding: 1em 2em;
   background-color: #4b3d2e;
   color: white;
   border: none;
@@ -799,16 +785,16 @@ html, body {
 }
 
 .checkbox-column {
-  width: 40px;
+  width: 4em;
 }
 
 .edit-form-section {
-  margin-top: 20px;
-  padding: 20px;
+  margin-top: 2em;
+  padding: 2em;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 1px 5px rgba(0,0,0,0.1);
-  display: none; /* показывать через JS при активации */
+  display: none;
 }
 
 .edit-form-section.active {
@@ -816,30 +802,30 @@ html, body {
 }
 
 .edit-form-section h3 {
-  margin-bottom: 15px;
+  margin-bottom: 1.5em;
 }
 
 .edit-form-section label {
   display: block;
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
 }
 
 .edit-form-section input,
 .edit-form-section select {
   width: 100%;
-  padding: 8px 10px;
+  padding: 0.6 1em;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 1em;
 }
 
 .edit-form-section button {
-  margin-top: 15px;
-  padding: 10px 20px;
+  margin-top: 1.5em;
+  padding: 1em 2em;
   background-color: #28a745;
   border: none;
-  color: white;
+  color: black;
   border-radius: 6px;
   cursor: pointer;
 }
@@ -859,37 +845,37 @@ html, body {
 
 .book-form {
   background: #f9f9f9;
-  padding: 20px;
-  margin-top: 20px;
+  padding: 2em;
+  margin-top: 2em;
   border: 2px solid #ddd;
   border-radius: 10px;
 }
 
 .book-form h3 {
-  margin-bottom: 15px;
+  margin-bottom: 1.5em;
 }
 
 .book-form label {
   display: block;
-  margin-top: 10px;
+  margin-top: 1em;
   font-weight: bold;
 }
 
 .book-form input,
 .book-form select {
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
+  padding: 0.6em;
+  margin-top: 0.5em;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
 .book-form button {
-  margin-top: 15px;
-  padding: 10px 15px;
+  margin-top: 1.5em;
+  padding: 1em 1.5em;
   background-color: #3c7;
   border: none;
-  color: #fff;
+  color: black;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;

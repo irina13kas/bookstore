@@ -6,7 +6,6 @@ if ($_COOKIE['user_role'] !== 'Admin') {
     exit;
 }
 
-// Загрузка данных
 include "../includes/data_for_new_book.php";
 ?>
 <!DOCTYPE html>
@@ -24,10 +23,8 @@ include "../includes/data_for_new_book.php";
   <div class="container">
 <h2>Управление книгами</h2>
 
-
   <div class="tool-buttons">
     <button data-target="form-add" class="tool-btn">Внести</button>
-    <button data-target="form-delete" class="tool-btn" >Удалить</button>
   </div>
   <?php if ($books):
     echo '<table class="book-table">';
